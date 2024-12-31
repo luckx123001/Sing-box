@@ -85,9 +85,9 @@ install_singbox() {
 echo -e "${yellow}本脚本同时四协议共存${purple}(vmess-ws,vmess-ws-tls(argo),hysteria2,tuic)${re}"
 echo -e "${yellow}开始运行前，请确保在面板${purple}已开放3个端口，一个tcp端口和两个udp端口${re}"
 echo -e "${yellow}面板${purple}Additional services中的Run your own applications${yellow}已开启为${purplw}Enabled${yellow}状态${re}"
-reading "\n确定继续安装吗？【y/n】: " choice
-  case "$choice" in
-    [Yy])
+# reading "\n确定继续安装吗？【y/n】: " choice
+#   case "$choice" in
+#     [Yy])
         cd $WORKDIR
         # read_nz_variables
         # read_vmess_port
@@ -95,24 +95,25 @@ reading "\n确定继续安装吗？【y/n】: " choice
         generate_config
         download_singbox
         get_links
-      ;;
-    [Nn]) exit 0 ;;
-    *) red "无效的选择，请输入y或n" && menu ;;
-  esac
+  #     ;;
+  #   [Nn]) exit 0 ;;
+  #   *) red "无效的选择，请输入y或n" && menu ;;
+  # esac
 }
 
 uninstall_singbox() {
-  reading "\n确定要卸载吗？【y/n】: " choice
-    case "$choice" in
-        [Yy])
-	      ps aux | grep $(whoami) | grep -v "sshd\|bash\|grep" | awk '{print $2}' | xargs -r kill -9 2>/dev/null
-       	      rm -rf $WORKDIR
-	      clear
-       	      green “四合一已完全卸载”
-          ;;
-        [Nn]) exit 0 ;;
-    	  *) red "无效的选择，请输入y或n" && menu ;;
-    esac
+  # reading "\n确定要卸载吗？【y/n】: " choice
+  #   case "$choice" in
+  #       [Yy])
+	 #      ps aux | grep $(whoami) | grep -v "sshd\|bash\|grep" | awk '{print $2}' | xargs -r kill -9 2>/dev/null
+  #      	      rm -rf $WORKDIR
+	 #      clear
+  #      	      green “四合一已完全卸载”
+  #         ;;
+  #       [Nn]) exit 0 ;;
+  #   	  *) red "无效的选择，请输入y或n" && menu ;;
+  #   esac
+  ps aux | grep $(whoami) | grep -v "sshd\|bash\|grep" | awk '{print $2}' | xargs -r kill -9 2>/dev/null
 }
 
 kill_all_tasks() {
@@ -516,6 +517,6 @@ menu() {
     esac
 }
 # menu
-kill_all_tasks
+# kill_all_tasks
 uninstall_singbox
 install_singbox
