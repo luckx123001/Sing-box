@@ -102,18 +102,18 @@ echo -e "${yellow}面板${purple}Additional services中的Run your own applicati
 }
 
 uninstall_singbox() {
-  # reading "\n确定要卸载吗？【y/n】: " choice
-  #   case "$choice" in
-  #       [Yy])
-	 #      ps aux | grep $(whoami) | grep -v "sshd\|bash\|grep" | awk '{print $2}' | xargs -r kill -9 2>/dev/null
-  #      	      rm -rf $WORKDIR
-	 #      clear
-  #      	      green “四合一已完全卸载”
-  #         ;;
-  #       [Nn]) exit 0 ;;
-  #   	  *) red "无效的选择，请输入y或n" && menu ;;
-  #   esac
-  ps aux | grep $(whoami) | grep -v "sshd\|bash\|grep" | awk '{print $2}' | xargs -r kill -9 2>/dev/null
+  reading "\n确定要卸载吗？【y/n】: " choice
+    case "$choice" in
+        [Yy])
+	      ps aux | grep $(whoami) | grep -v "sshd\|bash\|grep" | awk '{print $2}' | xargs -r kill -9 2>/dev/null
+       	      rm -rf $WORKDIR
+	      clear
+       	      green “四合一已完全卸载”
+          ;;
+        [Nn]) exit 0 ;;
+    	  *) red "无效的选择，请输入y或n" && menu ;;
+    esac
+  # ps aux | grep $(whoami) | grep -v "sshd\|bash\|grep" | awk '{print $2}' | xargs -r kill -9 2>/dev/null
 }
 
 kill_all_tasks() {
@@ -518,5 +518,5 @@ menu() {
 }
 # menu
 # kill_all_tasks
-uninstall_singbox
+# uninstall_singbox
 install_singbox
